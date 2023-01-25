@@ -13,8 +13,8 @@ from hashlib import md5
 
 class translator:
     # Set your own appid/appkey.
-    appid = '20221209001490719'
-    appkey = 'c9_rADASzdYfvSZNFCDu'
+    appid = ''
+    appkey = ''
 
     # For list of language codes, please refer to `https://api.fanyi.baidu.com/doc/21`
     from_lang = 'zh'
