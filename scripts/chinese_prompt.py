@@ -10,9 +10,9 @@ import torch
 
 class Script(scripts.Script):
     def __init__(self):
-        transServ = translator()
-        transServ.appid = '20221209001490719'
-        transServ.appkey = 'c9_rADASzdYfvSZNFCDu'
+        self.transServ = translator()
+        self.transServ.appid = '20221209001490719'
+        self.transServ.appkey = 'c9_rADASzdYfvSZNFCDu'
 
     def title(self):
         return "中文咒语"
@@ -25,7 +25,7 @@ class Script(scripts.Script):
 
     def run(self, p:processing, translate):
         if translate:
-            p.prompt = transServ.translate(p.prompt)
-            p.negative_prompt = transServ.translate(p.negative_prompt)
+            p.prompt = self.transServ.translate(p.prompt)
+            p.negative_prompt = self.transServ.translate(p.negative_prompt)
         processed = processing.process_images(p)
         return processed
