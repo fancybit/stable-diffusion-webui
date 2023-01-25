@@ -4,12 +4,13 @@ import gradio as gr
 from modules import processing, shared, sd_samplers, prompt_parser
 from modules.processing import Processed
 from modules.shared import opts, cmd_opts, state
-from modules.baidu_trans import transServ
+from modules.baidu_trans import translator
 
 import torch
 
 class Script(scripts.Script):
     def __init__(self):
+        transServ = translator()
         transServ.appid = '20221209001490719'
         transServ.appkey = 'c9_rADASzdYfvSZNFCDu'
 
