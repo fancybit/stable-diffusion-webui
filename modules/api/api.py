@@ -139,7 +139,7 @@ class Api:
         self.app.add_middleware(
             CORSMiddleware,
             # 允许跨域的源列表，例如 ["http://www.example.org"] 等等，["*"] 表示允许任何源
-            allow_origins=["https://www.vinci.love","https://admin.vinci.love","https://m.vinci.love","https://mb.vinci.love","http://localhost:5174/"],
+            allow_origins=["*"],
             # 跨域请求是否支持 cookie，默认是 False，如果为 True，allow_origins 必须为具体的源，不可以是 ["*"]
             allow_credentials=False,
             # 允许跨域请求的 HTTP 方法列表，默认是 ["GET"]
