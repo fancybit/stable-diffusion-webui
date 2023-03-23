@@ -136,7 +136,7 @@ class Api:
         self.app = app
         self.queue_lock = queue_lock
         api_middleware(self.app)
-        app.add_middleware(
+        self.app.add_middleware(
             CORSMiddleware,
             # 允许跨域的源列表，例如 ["http://www.example.org"] 等等，["*"] 表示允许任何源
             allow_origins=["https://www.vinci.love","https://admin.vinci.love","https://m.vinci.love","https://mb.vinci.love","http://localhost:5174/"],
