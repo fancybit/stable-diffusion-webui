@@ -152,6 +152,7 @@ class Api:
             # 设定浏览器缓存 CORS 响应的最长时间，单位是秒。默认为 600，一般也很少指定
             # max_age=1000
         )
+        print("已经开启跨域")
         self.add_api_route("/sdapi/v1/txt2img", self.text2imgapi,
                            methods=["POST"], response_model=TextToImageResponse)
         self.add_api_route("/sdapi/v1/img2img", self.img2imgapi,
