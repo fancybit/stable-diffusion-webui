@@ -1,4 +1,4 @@
-import base64
+ï»¿import base64
 import io
 import time
 import datetime
@@ -182,21 +182,21 @@ class Api:
         api_middleware(self.app)
         self.app.add_middleware(
             CORSMiddleware,
-            # ÔÊÐí¿çÓòµÄÔ´ÁÐ±í£¬ÀýÈç ["http://www.example.org"] µÈµÈ£¬["*"] ±íÊ¾ÔÊÐíÈÎºÎÔ´
+            # ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ["http://www.example.org"] ï¿½ÈµÈ£ï¿½["*"] ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Îºï¿½Ô´
             allow_origins=["*"],
-            # ¿çÓòÇëÇóÊÇ·ñÖ§³Ö cookie£¬Ä¬ÈÏÊÇ False£¬Èç¹ûÎª True£¬allow_origins ±ØÐëÎª¾ßÌåµÄÔ´£¬²»¿ÉÒÔÊÇ ["*"]
+            # ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Ö§ï¿½ï¿½ cookieï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½ Falseï¿½ï¿½ï¿½ï¿½ï¿½Îª Trueï¿½ï¿½allow_origins ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ["*"]
             allow_credentials=False,
-            # ÔÊÐí¿çÓòÇëÇóµÄ HTTP ·½·¨ÁÐ±í£¬Ä¬ÈÏÊÇ ["GET"]
+            # ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ HTTP ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½ ["GET"]
             allow_methods=["*"],
-            # ÔÊÐí¿çÓòÇëÇóµÄ HTTP ÇëÇóÍ·ÁÐ±í£¬Ä¬ÈÏÊÇ []£¬¿ÉÒÔÊ¹ÓÃ ["*"] ±íÊ¾ÔÊÐíËùÓÐµÄÇëÇóÍ·
-            # µ±È» Accept¡¢Accept-Language¡¢Content-Language ÒÔ¼° Content-Type ×ÜÖ®±»ÔÊÐíµÄ
+            # ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ HTTP ï¿½ï¿½ï¿½ï¿½Í·ï¿½Ð±ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½ []ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ ["*"] ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½Í·
+            # ï¿½ï¿½È» Acceptï¿½ï¿½Accept-Languageï¿½ï¿½Content-Language ï¿½Ô¼ï¿½ Content-Type ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             allow_headers=["*"],
-            # ¿ÉÒÔ±»ä¯ÀÀÆ÷·ÃÎÊµÄÏìÓ¦Í·, Ä¬ÈÏÊÇ []£¬Ò»°ãºÜÉÙÖ¸¶¨
+            # ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½Ó¦Í·, Ä¬ï¿½ï¿½ï¿½ï¿½ []ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
             # expose_headers=["*"]
-            # Éè¶¨ä¯ÀÀÆ÷»º´æ CORS ÏìÓ¦µÄ×î³¤Ê±¼ä£¬µ¥Î»ÊÇÃë¡£Ä¬ÈÏÎª 600£¬Ò»°ãÒ²ºÜÉÙÖ¸¶¨
+            # ï¿½è¶¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ CORS ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½î³¤Ê±ï¿½ä£¬ï¿½ï¿½Î»ï¿½ï¿½ï¿½ë¡£Ä¬ï¿½ï¿½Îª 600ï¿½ï¿½Ò»ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
             # max_age=1000
         )
-        print("ÒÑ¾­¿ªÆô¿çÓò")
+        print("ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
         self.add_api_route("/sdapi/v1/txt2img", self.text2imgapi,
                            methods=["POST"], response_model=TextToImageResponse)
         self.add_api_route("/sdapi/v1/img2img", self.img2imgapi,
