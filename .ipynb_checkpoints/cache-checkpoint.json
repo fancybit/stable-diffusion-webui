@@ -1,0 +1,20 @@
+{
+    "hashes": {
+        "checkpoint/ElyOrangeMix.ckpt": {
+            "mtime": 1673409348.1802516,
+            "sha256": "5bbe32e905f23ff7e4ef5cc3542dd9ad7fa5df3201ac99b0f1b3c9f195cc1d0b"
+        },
+        "hypernet/destiny_child-23000": {
+            "mtime": 1673074896.1998246,
+            "sha256": "6eb9403e7ac227763379328339738c5d6c8fd215f6f3288ebbb240b61e3b7518"
+        },
+        "checkpoint/anything-v4.5-pruned.ckpt": {
+            "mtime": 1674435520.319922,
+            "sha256": "e4b17ce185857a3a20d778efb5222f32dfb65b89f258b29014a5659d319cb4bd"
+        },
+        "checkpoint/anything-v4.0.ckpt": {
+            "mtime": 1674519402.8882759,
+            "sha256": "3b26c9c497c923a07ab8d55f2921cf44749535e4b0c890c5c37968e4c90e7258"
+        }
+    }
+}

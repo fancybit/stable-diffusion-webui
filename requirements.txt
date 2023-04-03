@@ -4,7 +4,7 @@ basicsr
 fonts
 font-roboto
 gfpgan
-gradio==3.23
+gradio
 invisible-watermark
 numpy
 omegaconf
@@ -30,4 +30,4 @@ GitPython
 torchsde
 safetensors
 psutil
-rich
+	
