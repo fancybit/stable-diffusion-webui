@@ -30,6 +30,7 @@ from typing import List
 from fastapi.middleware.cors import CORSMiddleware
 import piexif
 import piexif.helper
+import asyncio
 
 
 def upscaler_to_index(name: str):
@@ -182,21 +183,12 @@ class Api:
         api_middleware(self.app)
         self.app.add_middleware(
             CORSMiddleware,
-            # ���������Դ�б������� ["http://www.example.org"] �ȵȣ�["*"] ��ʾ�����κ�Դ
             allow_origins=["*"],
-            # ���������Ƿ�֧�� cookie��Ĭ���� False�����Ϊ True��allow_origins ����Ϊ�����Դ���������� ["*"]
             allow_credentials=False,
-            # ������������� HTTP �����б���Ĭ���� ["GET"]
             allow_methods=["*"],
-            # ������������� HTTP ����ͷ�б���Ĭ���� []������ʹ�� ["*"] ��ʾ�������е�����ͷ
-            # ��Ȼ Accept��Accept-Language��Content-Language �Լ� Content-Type ��֮��������
             allow_headers=["*"],
-            # ���Ա���������ʵ���Ӧͷ, Ĭ���� []��һ�����ָ��
-            # expose_headers=["*"]
-            # �趨��������� CORS ��Ӧ���ʱ�䣬��λ���롣Ĭ��Ϊ 600��һ��Ҳ����ָ��
-            # max_age=1000
         )
-        print("�Ѿ���������")
+
         self.add_api_route("/sdapi/v1/txt2img", self.text2imgapi,
                            methods=["POST"], response_model=TextToImageResponse)
         self.add_api_route("/sdapi/v1/img2img", self.img2imgapi,
@@ -278,7 +270,7 @@ class Api:
             script_name, script_runner.selectable_scripts)
         script = script_runner.selectable_scripts[script_idx]
         return script, script_idx
-    
+
     def get_scripts_list(self):
         t2ilist = [str(title.lower()) for title in scripts.scripts_txt2img.titles]
         i2ilist = [str(title.lower()) for title in scripts.scripts_img2img.titles]
@@ -334,6 +326,15 @@ class Api:
         return script_args
 
     def text2imgapi(self, txt2imgreq: StableDiffusionTxt2ImgProcessingAPI):
+        try:
+            loop = asyncio.get_event_loop()
+        except RuntimeError as e:
+            if str(e).startswith('There is no current event loop in thread'):
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+            else:
+                raise
+
         script_runner = scripts.scripts_txt2img
         if not script_runner.scripts:
             script_runner.initialize_scripts(False)
@@ -761,7 +762,7 @@ class Api:
         except Exception as err:
             cuda = {'error': f'{err}'}
         return MemoryResponse(ram=ram, cuda=cuda)
-
+image.png
     def launch(self, server_name, port):
         self.app.include_router(self.router)
         uvicorn.run(self.app, host=server_name, port=port)
