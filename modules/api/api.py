@@ -762,7 +762,7 @@ class Api:
         except Exception as err:
             cuda = {'error': f'{err}'}
         return MemoryResponse(ram=ram, cuda=cuda)
-image.png
+
     def launch(self, server_name, port):
         self.app.include_router(self.router)
         uvicorn.run(self.app, host=server_name, port=port)
